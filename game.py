@@ -149,14 +149,20 @@ class QuizGame:
         while True:
             self.show_menu()
             selection = read_number("선택: ", 1, 5)
-            if selection == 1:
-                self.play()
-            elif selection == 2:
-                self.add_quiz()
-            elif selection == 3:
-                self.list_quizzes()
-            elif selection == 4:
-                self.show_score()
-            elif selection == 5:
-                print("게임을 종료합니다.")
+            if not self.handle_selection(selection):
                 break
+
+    def handle_selection(self, selection):
+        """선택을 실행하고 계속할지 bool로 반환한다."""
+        if selection == 1:
+            self.play()
+        elif selection == 2:
+            self.add_quiz()
+        elif selection == 3:
+            self.list_quizzes()
+        elif selection == 4:
+            self.show_score()
+        elif selection == 5:
+            print("게임을 종료합니다.")
+            return False
+        return True
