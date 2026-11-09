@@ -108,6 +108,22 @@ class QuizGame:
             else:
                 print(f"오답입니다. 정답: {quiz.answer}. {quiz.choices[quiz.answer - 1]}")
         print(f"\n결과: {total}문제 중 {correct}문제 정답! ({correct / total * 100:.1f}점)")
+        self.update_score(correct, total)
+
+    def update_score(self, correct, total):
+        # 문제를 추가해 총 개수가 달라져도 정답 비율로 공정하게 비교한다.
+        previous = self.best_score
+        if previous is None or correct * previous["total"] > previous["correct"] * total:
+            self.best_score = {"correct": correct, "total": total}
+            print("새로운 최고 점수입니다!")
+            self.save_state()
+
+    def show_score(self):
+        if self.best_score is None:
+            print("아직 완료한 게임이 없습니다. 퀴즈를 먼저 풀어 주세요.")
+            return
+        correct, total = self.best_score["correct"], self.best_score["total"]
+        print(f"최고 점수: {correct / total * 100:.1f}점 ({total}문제 중 {correct}문제 정답)")
 
     def add_quiz(self):
         print("\n새로운 퀴즈를 추가합니다.")
@@ -139,8 +155,8 @@ class QuizGame:
                 self.add_quiz()
             elif selection == 3:
                 self.list_quizzes()
+            elif selection == 4:
+                self.show_score()
             elif selection == 5:
                 print("게임을 종료합니다.")
                 break
-            else:
-                print("선택한 기능은 다음 단계에서 구현합니다.")
