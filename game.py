@@ -7,7 +7,7 @@ import tempfile
 from datetime import datetime
 
 from default_quizzes import create_default_quizzes
-from input_helpers import read_number
+from input_helpers import read_number, read_text
 from quiz import Quiz
 
 STATE_PATH = Path(__file__).resolve().parent / "state.json"
@@ -109,12 +109,26 @@ class QuizGame:
                 print(f"오답입니다. 정답: {quiz.answer}. {quiz.choices[quiz.answer - 1]}")
         print(f"\n결과: {total}문제 중 {correct}문제 정답! ({correct / total * 100:.1f}점)")
 
+    def add_quiz(self):
+        print("\n새로운 퀴즈를 추가합니다.")
+        question = read_text("문제: ")
+        choices = [read_text(f"선택지 {number}: ") for number in range(1, 5)]
+        answer = read_number("정답 번호 (1~4): ", 1, 4)
+        # 모든 입력을 마친 뒤에만 추가한다. 중간에 중단된 문제는 남기지 않는다.
+        self.quizzes.append(Quiz(question, choices, answer))
+        if self.save_state():
+            print("퀴즈가 추가되고 저장되었습니다.")
+        else:
+            print("퀴즈는 메모리에 추가되었습니다. 종료하면 사라질 수 있습니다.")
+
     def run(self):
         while True:
             self.show_menu()
             selection = read_number("선택: ", 1, 5)
             if selection == 1:
                 self.play()
+            elif selection == 2:
+                self.add_quiz()
             elif selection == 5:
                 print("게임을 종료합니다.")
                 break
