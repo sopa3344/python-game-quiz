@@ -121,6 +121,14 @@ class QuizGame:
         else:
             print("퀴즈는 메모리에 추가되었습니다. 종료하면 사라질 수 있습니다.")
 
+    def list_quizzes(self):
+        if not self.quizzes:
+            print("등록된 퀴즈가 없습니다.")
+            return
+        print(f"\n등록된 퀴즈 목록 (총 {len(self.quizzes)}개)")
+        for number, quiz in enumerate(self.quizzes, start=1):
+            print(f"[{number}] {quiz.question}")
+
     def run(self):
         while True:
             self.show_menu()
@@ -129,6 +137,8 @@ class QuizGame:
                 self.play()
             elif selection == 2:
                 self.add_quiz()
+            elif selection == 3:
+                self.list_quizzes()
             elif selection == 5:
                 print("게임을 종료합니다.")
                 break
