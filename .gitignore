@@ -4,5 +4,6 @@ __pycache__/
 state.json
 state.json.tmp
 state.corrupt-*.json
+.quiz-state-*.tmp
 .DS_Store
 .env
