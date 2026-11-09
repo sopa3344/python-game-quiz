@@ -16,6 +16,14 @@ OUTPUT = ROOT / "docs" / "evidence"
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
+def public_text(text):
+    """공개 증거에 개인 PC 경로가 들어가지 않도록 치환한다."""
+    for path, label in [(Path(sys.executable), "[PYTHON_EXECUTABLE]"),
+                        (ROOT, "[PROJECT_ROOT]"), (Path.home(), "[USER_PROFILE]")]:
+        text = text.replace(str(path), label).replace(path.as_posix(), label)
+    return text
+
+
 def record(name, command, directory, inputs=None):
     result = subprocess.run(command, cwd=directory, input=inputs, text=True,
                             encoding="utf-8", capture_output=True, timeout=30)
@@ -23,13 +31,13 @@ def record(name, command, directory, inputs=None):
     if inputs is not None:
         text += "STDIN (자동 제공):\n" + inputs + "\n"
     text += f"EXIT CODE: {result.returncode}\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
-    (OUTPUT / name).write_text(text, encoding="utf-8")
+    (OUTPUT / name).write_text(public_text(text), encoding="utf-8")
     if result.returncode:
         raise RuntimeError(f"{name}: 실행 실패. 저장된 로그를 확인하세요.")
 
 
 environment = f"Python: {sys.version}\nPlatform: {platform.platform()}\n"
-for arguments in [["git", "--version"], ["git", "config", "user.name"], ["git", "config", "user.email"]]:
+for arguments in [["git", "--version"]]:
     result = subprocess.run(arguments, cwd=ROOT, text=True, encoding="utf-8", capture_output=True, check=True)
     environment += "$ " + " ".join(arguments) + "\n" + result.stdout
 environment += "\nWSL 실행은 이번 환경의 접근 제한으로 검증하지 않았습니다.\n"

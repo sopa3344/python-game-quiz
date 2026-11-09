@@ -9,7 +9,17 @@ Python 3.10 이상에서 외부 패키지 없이 실행합니다. 실제 검증 
 
 ## 실행 방법
 
-프로젝트 폴더에서 실행합니다.
+공개 저장소: https://github.com/sopa3344/python-game-quiz
+
+처음 받는 컴퓨터에서는 다음 명령으로 코드를 내려받고 실행합니다. 아래는 실행 안내이며 이 환경에서 clone 명령 성공을 기록한 것은 아닙니다.
+
+```bash
+git clone https://github.com/sopa3344/python-game-quiz.git
+cd python-game-quiz
+python main.py
+```
+
+이미 프로젝트 폴더를 열었다면 다음 명령으로 실행합니다.
 
 ```bash
 python main.py
@@ -89,7 +99,9 @@ python -m unittest discover -s tests -v
 
 자동 테스트 23개를 통과했습니다. 저장과 재시작은 별도 프로세스 실행으로도 확인했습니다. Ctrl+C는 KeyboardInterrupt를 발생시키는 자동 테스트로 검증했으며, 실제 키보드 조작 화면을 촬영한 것은 아닙니다.
 
-로컬 기능별 커밋과 `feature/quiz-play` 병합을 실제로 수행했습니다. GitHub 새 저장소 생성과 업로드, GitHub를 거친 clone과 pull은 아직 완료되지 않았습니다. 터미널의 외부 네트워크 접근 제한과 GitHub 재로그인이 남아 있습니다. 로컬 원격 저장소 실습은 GitHub 완료 증거와 구분합니다.
+로컬 기능별 커밋과 `feature/quiz-play` 병합을 실제로 수행했고, 공개 GitHub 저장소에 코드와 변경 이력을 업로드했습니다. CLI 인증과 실행 환경 제한으로 GitHub 연결 API를 사용했습니다. 원본 17개 커밋의 변경 내용과 병합 구조를 가져왔으며 GitHub 초기화와 공개 문서 갱신 커밋이 더해졌습니다. 원격 커밋 ID와 작성 시간은 새 값입니다. 대응표는 [이력 가져오기 기록](docs/github-import.md)에 있습니다.
+
+공개 실행 로그에서 이메일, 작성자 설정값과 개인 PC 경로를 제외했습니다. 프로그램 소스와 테스트는 그대로이며 증거 수집 도구도 개인 경로를 제외하도록 고쳤습니다. GitHub를 거친 CLI push, clone과 pull 실습, 원본 터미널 화면 캡처는 아직 완료되지 않았습니다. API 업로드를 명령어 실습 성공으로 기록하지 않습니다.
 
 자세한 기준은 [제출 체크리스트](docs/submission-checklist.md)와 [Git 실습 기록](docs/git-practice.md)을 봅니다.
 

@@ -16,7 +16,8 @@
 | 기능별 의미 있는 커밋 10개 이상 | 로컬 완료 | git log로 확인 |
 | 브랜치 생성과 실제 merge | 로컬 완료 | feature/quiz-play와 부모 둘을 가진 merge 커밋 |
 | init, add, commit, checkout | 완료 | 실제 로컬 Git 실행 |
-| 새 GitHub 저장소와 최초 push | 미완료 | 계정 재로그인과 실행 환경 제한 |
+| 새 공개 GitHub 저장소와 코드 업로드 | 완료 | sopa3344/python-game-quiz, GitHub API 업로드 |
+| 최초 커밋 직후 CLI push | 미완료 | API 업로드와 별도인 명령어 실습 |
 | clone, 복제본 commit과 push, 원본 pull | 미완료 | 로컬 대체 실습도 Git sh 접근 제한으로 실패 |
 | README 필수 항목 | 완료 | 개요, 주제 이유, 실행, 기능, 구조, 저장 형식 |
 | 개발 환경과 실행 결과 원본 스크린샷 | 미완료 | docs/screenshots/README.md에 촬영 항목 |
@@ -25,4 +26,6 @@
 
 실제 테스트 23개가 모두 통과했습니다. 최초 검사에서는 환경이 지정한 임시 디렉터리 접근 권한 때문에 실패했습니다. 테스트용 임시 폴더를 프로젝트의 tests 아래로 제한한 뒤 전체 통과를 확인했습니다. 프로그램의 사용자 state.json은 검증 중 변경하지 않았습니다.
 
-GitHub 저장소 URL과 원격 실습 증거, 원본 화면 캡처가 남아 있어 과제 전체를 제출 완료로 표시하지 않습니다. `scripts/finish_github.ps1`은 남은 원격 작업용이며 이 환경에서는 성공 실행하지 않았습니다.
+GitHub 저장소 URL은 https://github.com/sopa3344/python-game-quiz 입니다. 원본 17개 커밋의 내용과 병합 구조를 GitHub API로 가져왔고, 공개 로그의 이메일과 개인 경로를 제외했습니다. 원격 커밋 ID는 로컬 원본과 다르며 docs/github-import.md에 대응표가 있습니다.
+
+CLI push와 clone/pull 실습 증거, 원본 화면 캡처가 남아 있어 과제 전체를 제출 완료로 표시하지 않습니다. `scripts/finish_github.ps1`은 GitHub에서 새로 clone한 폴더에서 사용할 남은 원격 실습용이며 이 환경에서는 성공 실행하지 않았습니다.

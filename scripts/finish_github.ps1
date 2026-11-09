@@ -2,6 +2,7 @@ param(
     [string]$Owner = 'sopa3344',
     [string]$Repository = 'python-game-quiz'
 )
+# GitHub에서 새로 clone한 폴더에서 실행한다. 가져오기 전 원본 이력은 별도로 보관한다.
 $ErrorActionPreference = 'Stop'
 $projectRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
@@ -15,6 +16,8 @@ function Invoke-Git {
     $result = & git @Arguments 2>&1
     $code = $LASTEXITCODE
     $record = "`nDIRECTORY: $(Get-Location)`nCOMMAND: git $($Arguments -join ' ')`n$($result -join "`n")`nEXIT CODE: $code"
+    $record = $record.Replace($clonePath, '[CLONE_ROOT]').Replace($projectRoot, '[PROJECT_ROOT]')
+    if ($env:USERPROFILE) { $record = $record.Replace($env:USERPROFILE, '[USER_PROFILE]') }
     Add-Content -LiteralPath $logPath -Value $record -Encoding utf8
     Write-Host ($result -join "`n")
     if ($code -ne 0) { throw 'Git 작업이 실패했습니다. 기록을 확인하세요.' }
