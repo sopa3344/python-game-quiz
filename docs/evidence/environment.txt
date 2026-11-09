@@ -1,0 +1,10 @@
+Python: 3.15.2 (tags/v3.15.2:5e58eaa, Oct 25 2026, 17:27:03) [MSC v.1951 64 bit (AMD64)]
+Platform: Windows-11-10.0.26200-SP0
+$ git --version
+git version 2.56.0.windows.4
+$ git config user.name
+[공개본에서 제외]
+$ git config user.email
+[공개본에서 제외]
+
+WSL 실행은 이번 환경의 접근 제한으로 검증하지 않았습니다.

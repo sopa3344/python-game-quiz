@@ -1,0 +1,22 @@
+COMMAND: git --no-pager log --oneline --graph --all
+EXIT CODE: 0
+STDOUT:
+* 7899b64 Test: 실제 콘솔 실행과 재시작 증거 수집 도구 추가
+* 1e03c7a Docs: 실행 방법과 데이터 구조 및 복습 가이드 작성
+* 347ccc9 Test: 입력 예외와 저장 복구 및 재시작 23개 검증
+* 5859d9d Refactor: QuizGame 메뉴 선택 처리와 반복 분리
+* 864264e Fix: Ctrl+C와 EOF 종료 시 완료한 데이터 보존
+* 28e5bf7 Feat: 정답 비율로 최고 점수 비교와 영구 저장
+* e38fe77 Feat: 퀴즈 목록과 빈 목록 안내 구현
+* 8980fd1 Feat: 입력 검증을 포함한 퀴즈 등록과 즉시 저장
+* 01f1725 Feat: UTF-8 JSON 저장과 손상 파일 복구 구현
+*   0a8003e Merge: 퀴즈 플레이 기능을 main에 병합
+|\  
+| * 958f0ed Feat: 별도 브랜치에서 퀴즈 출제와 정답 판정 구현
+|/  
+* 2f2b357 Feat: 게임 개발 기초 기본 퀴즈 여섯 개 작성
+* d940907 Feat: Quiz 클래스와 문제 데이터 검증 구현
+* f2d1990 Feat: 메뉴 반복과 숫자 입력 재시도 구현
+* 4798126 Chore: Python 퀴즈 프로젝트와 Git 기본 설정
+
+STDERR:

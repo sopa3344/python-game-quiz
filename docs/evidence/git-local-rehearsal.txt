@@ -1,0 +1,22 @@
+로컬 bare 저장소를 원격 역할로 사용한 실제 실행입니다. GitHub 성공 증거가 아닙니다.
+
+DIRECTORY: [WORKSPACE_ROOT]\work
+$ git init --bare -b main [WORKSPACE_ROOT]\work\quiz-rehearsal-remote.git
+Initialized empty Git repository in [WORKSPACE_ROOT]/work/quiz-rehearsal-remote.git/
+
+EXIT CODE: 0
+
+DIRECTORY: [PROJECT_ROOT]
+$ git remote add rehearsal [WORKSPACE_ROOT]\work\quiz-rehearsal-remote.git
+
+EXIT CODE: 0
+
+DIRECTORY: [PROJECT_ROOT]
+$ git push rehearsal main feature/quiz-play
+      0 [main] sh (27244) C:\Program Files\Git\usr\bin\sh.exe: *** fatal error - NtCreateDirectoryObject(\BaseNamedObjects\msys-2.0S5-1888ae32e00d56aa): 0xC0000022
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+EXIT CODE: 128
