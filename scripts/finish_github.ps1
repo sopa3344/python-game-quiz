@@ -57,8 +57,9 @@ try {
     $readme = Get-Content -LiteralPath 'README.md' -Raw -Encoding utf8
     if (-not $readme.Contains("GitHub 동기화 실습: $stamp")) { throw 'README 반영을 확인하지 못했습니다.' }
     Add-Content -LiteralPath $logPath -Encoding utf8 -Value "`nVERIFY: HEAD와 README 일치 확인 완료. $originalHead"
-    Invoke-Git -Arguments @('add', '--', "docs/evidence/github-sync-$stamp.txt")
     # 커밋 이후에는 로그 파일을 수정하지 않아 작업 폴더를 깨끗하게 유지한다.
+    & git add -- "docs/evidence/github-sync-$stamp.txt"
+    if ($LASTEXITCODE -ne 0) { throw '증거 파일을 스테이징하지 못했습니다.' }
     & git commit -m 'Docs: GitHub clone과 push 및 pull 실행 증거 저장'
     if ($LASTEXITCODE -ne 0) { throw '증거 커밋에 실패했습니다.' }
     & git push origin main
